@@ -19,10 +19,12 @@ CREATE TABLE compra(
   numero SERIAL PRIMARY KEY,
   fecha DATE,
   identificacion_cliente CHAR(20) UNIQUE,
+  estado CHAR(30),
+  total FLOAT,
   CONSTRAINT identificacion_llave_cliente FOREIGN KEY (identificacion_cliente) REFERENCES cliente(identificacion)
 );
 
-CREATE TABLE registro_compra(
+CREATE TABLE detalle_compra(
   id SERIAL PRIMARY KEY,
   numero_compra INTEGER,
   codigo_producto CHAR(100),
@@ -41,4 +43,5 @@ INSERT INTO producto(codigo, descripcion, stock, valor) VALUES
 INSERT INTO cliente(nombre, identificacion, cupo_compra) VALUES
 ('Martin Medina', '1090', 250000),
 ('Cristian Rojas', '1092', 300000),
+('Johanna Luna', '1095', 168500),
 ('Angie Diaz', '1093', 125000);
