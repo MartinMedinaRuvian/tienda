@@ -8,16 +8,26 @@ class CompraDAO {
   async obtenerTodos () {
     const response = await conexion.query('SELECT * FROM ' + nombreTabla);
     let compras = [];
-    for (const registro of response.rows) {
-      const compra = new Compra();
-      compra.numero = registro.numero;
-      compra.fecha = registro.fecha;
-      compra.estado = registro.estado;
-      compra.identificacionCliente = registro.identificacion_cliente;
-      compra.total = registro.total;
-      compras.push(compra);
+    if (response && response.rows.length > 0) {
+      for (const registro of response.rows) {
+        const compra = new Compra();
+        compra.numero = registro.numero;
+        compra.fecha = registro.fecha;
+        compra.estado = registro.estado;
+        compra.identificacionCliente = registro.identificacion_cliente;
+        compra.total = registro.total;
+        compras.push(compra);
+      }
     }
     return compras;
+  }
+
+  async verInfoCompra (identificacionCliente, estado) {
+    const response = await conexion.query('SELECT * FROM ' + nombreTabla + ' WHERE identificacion_cliente=$1 AND estado=$2', [identificacionCliente, estado]);  
+    if (response.rows.length > 0) {
+      return response.rows[0]
+    }
+    return null
   }
 
   async guardar (fecha, estado, identificacionCliente, total) {

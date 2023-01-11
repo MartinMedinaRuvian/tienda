@@ -18,7 +18,9 @@ app.use(express.urlencoded({extended:true}));
  */
 const clienteRutas = require('./control/ClienteControl');
 const productoRutas = require('./control/ProductoControl');
-const compraRutas = require('./control/compraControl');
+const compraRutas = require('./control/CompraControl');
+const detalleCompraRuta = require('./control/DetalleCompraControl');
+const cupoCompraRuta = require('./control/CupoCompraControl');
 
 /**
  * configuro las rutas del servidor
@@ -26,5 +28,7 @@ const compraRutas = require('./control/compraControl');
 app.use('/cliente', clienteRutas);
 app.use('/producto', productoRutas);
 app.use('/compra', compraRutas);
+app.use('/detalle_compra', detalleCompraRuta);
+app.use('/cupo_compra', cupoCompraRuta);
 
 module.exports = app;

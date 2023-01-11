@@ -7,6 +7,6 @@ const clienteServio = new ClienteServicio();
 ruta.get('/', async (req, res) =>{
   const registros = await clienteServio.verTodosClientes();
   res.status(200).json(registros)
-})
+});
 
-module.exports = ruta
+module.exports = ruta;

@@ -1,4 +1,5 @@
 const CompraDAO = require('../DAO/CompraDAO');
+const estado = require('../constante/EstadoCompraConstante')
 
 class CompraServicio {
 
@@ -9,8 +10,12 @@ class CompraServicio {
   }
 
   async guardarCompra (compra) {
-    const { fecha, estado, identificacionCliente, total } = compra
-    return this.compraDAO.guardar(fecha, estado, identificacionCliente, total)
+    const { fecha, identificacionCliente, total } = compra
+    return this.compraDAO.guardar(fecha, estado.PENDIENTE, identificacionCliente, total);
+  }
+
+  async verInfoCompra (identificacionCliente, estado) {
+    return await this.compraDAO.verInfoCompra(identificacionCliente, estado);
   }
 
 }
