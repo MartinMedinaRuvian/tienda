@@ -18,7 +18,7 @@ CREATE TABLE cliente(
 CREATE TABLE compra(
   numero SERIAL PRIMARY KEY,
   fecha DATE,
-  identificacion_cliente CHAR(20) UNIQUE,
+  identificacion_cliente CHAR(20),
   estado CHAR(30),
   total FLOAT,
   CONSTRAINT identificacion_llave_cliente FOREIGN KEY (identificacion_cliente) REFERENCES cliente(identificacion)
