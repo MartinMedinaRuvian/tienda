@@ -36,6 +36,13 @@ class CompraDAO {
     return response.rowCount > 0;
   }
 
+  async cambiarEstado (estado, numeroCompra) {
+    const compra = new Compra()
+    compra.estado = estado;
+    const response = await conexion.query('UPDATE ' + nombreTabla + ' SET estado=$1 WHERE numero=$2', [estado, numeroCompra]);
+    return response.rowCount > 0;
+  }
+
 }
 
 module.exports = CompraDAO;

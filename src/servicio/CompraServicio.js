@@ -18,6 +18,11 @@ class CompraServicio {
     return await this.compraDAO.verInfoCompra(identificacionCliente, estado);
   }
 
+  async confirmarCompra (compra) {
+    const { numero } = compra;
+    return await this.compraDAO.cambiarEstado(estado.CONFIRMADA, numero);
+  }
+
 }
 
 module.exports = CompraServicio;
