@@ -4,13 +4,11 @@ class Compra {
   fecha;
   identificacionCliente;
   estado;
-  total;
 
-  constructor (fecha, identificacionCliente, estado, total) {
+  constructor (fecha, identificacionCliente, estado) {
     this.fecha = fecha;
     this.identificacionCliente = identificacionCliente;
     this.estado = estado;
-    this.total = total;
   }
 
 }

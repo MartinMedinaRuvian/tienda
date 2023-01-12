@@ -10,11 +10,16 @@ class CompraServicio {
   }
 
   async guardarCompra (compra) {
-    const { fecha, identificacionCliente, total } = compra
-    return this.compraDAO.guardar(fecha, estado.PENDIENTE, identificacionCliente, total);
+    const { fecha, identificacionCliente } = compra
+    return this.compraDAO.guardar(fecha, estado.PENDIENTE, identificacionCliente);
   }
 
-  async verInfoCompra (identificacionCliente, estado) {
+  async totalCompraPendienteCliente (identificacionCliente, estado) {  
+    return await this.compraDAO.totalCompraPendienteCliente(identificacionCliente, estado);
+  }
+
+  async verInfoCompra (compra) {
+    const { identificacionCliente, estado } = compra
     return await this.compraDAO.verInfoCompra(identificacionCliente, estado);
   }
 

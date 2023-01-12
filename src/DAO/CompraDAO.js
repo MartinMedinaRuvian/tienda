@@ -15,11 +15,20 @@ class CompraDAO {
         compra.fecha = registro.fecha;
         compra.estado = registro.estado;
         compra.identificacionCliente = registro.identificacion_cliente;
-        compra.total = registro.total;
         compras.push(compra);
       }
     }
     return compras;
+  }
+
+  async totalCompraPendienteCliente (identificacionCliente, estado) {
+    const response = await conexion.query('SELECT SUM(d.valor) as total from detalle_compra d INNER JOIN compra c ON c.numero = d.numero_compra WHERE c.identificacion_cliente=$1 AND c.estado=$2', [identificacionCliente, estado]);  
+    if (response && response.rows.length > 0) {
+      return {
+        total: response.rows[0].total
+      }
+    }
+    return null;
   }
 
   async verInfoCompra (identificacionCliente, estado) {
@@ -30,10 +39,15 @@ class CompraDAO {
     return null
   }
 
-  async guardar (fecha, estado, identificacionCliente, total) {
-    const compra = new Compra(fecha, identificacionCliente, estado, total);
-    const response = await conexion.query('INSERT INTO ' + nombreTabla + ' (fecha, estado, identificacion_cliente, total) VALUES ($1, $2, $3, $4)', [compra.fecha, compra.estado, compra.identificacionCliente, compra.total]);
-    return response.rowCount > 0;
+  async guardar (fecha, estado, identificacionCliente) {
+    const compra = new Compra(fecha, identificacionCliente, estado);
+    const response = await conexion.query('INSERT INTO ' + nombreTabla + ' (fecha, estado, identificacion_cliente) VALUES ($1, $2, $3) returning numero', [compra.fecha, compra.estado, compra.identificacionCliente]);
+    if (response && response.rows.length > 0) {
+      return {
+        numero: response.rows[0].numero
+      }
+    }
+    return null;
   }
 
   async cambiarEstado (estado, numeroCompra) {

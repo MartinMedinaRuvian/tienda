@@ -11,9 +11,16 @@ ruta.get('/', async (req, res) =>{
 
 ruta.post('/', async (req, res) => {
   const registroGuardar = req.body;
-  const guardar = compraServicio.guardarCompra(registroGuardar);
-  guardar ? res.status(200).json({"mensaje":"Guardado correctamente"}) : res.status(500).json({"mensaje":"Error al guardar"});
+  const guardar = await compraServicio.guardarCompra(registroGuardar);
+  res.status(200).json(guardar)
 });
+
+ruta.post('/info', async (req, res) =>{
+  const compraVer = req.body;
+  const registro = await compraServicio.verInfoCompra(compraVer);
+  res.status(200).json(registro);
+});
+
 
 ruta.put('/confirmar', async (req, res) => {
   const registro = req.body;

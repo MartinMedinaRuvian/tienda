@@ -12,7 +12,6 @@ class DetalleCompraDAO {
       for (const registro of response.rows) {
         const detalleCompra = new DetalleCompra();
         detalleCompra.codigoProducto = registro.codigo_producto;
-        detalleCompra.cantidad = registro.cantidad;
         detalleCompra.numeroCompra = registro.numero_compra;
         detalleCompra.valor = registro.valor;
         detalleCompras.push(detalleCompra);
@@ -21,9 +20,9 @@ class DetalleCompraDAO {
     return detalleCompras;
   }
 
-  async guardar (codigoProducto, cantidad, valor, numeroCompra) {
-    const detalleCompra = new DetalleCompra(numeroCompra, codigoProducto, cantidad, valor);
-    const response = await conexion.query('INSERT INTO ' + nombreTabla + ' (numero_compra, codigo_producto, cantidad, valor) VALUES ($1, $2, $3, $4)', [detalleCompra.numeroCompra, detalleCompra.codigoProducto, detalleCompra.cantidad, detalleCompra.valor]);
+  async guardar (numeroCompra, codigoProducto, valor) {
+    const detalleCompra = new DetalleCompra(numeroCompra, codigoProducto, valor);
+    const response = await conexion.query('INSERT INTO ' + nombreTabla + ' (numero_compra, codigo_producto, valor) VALUES ($1, $2, $3)', [detalleCompra.numeroCompra, detalleCompra.codigoProducto, detalleCompra.valor]);
     return response.rowCount > 0;
   }
 

@@ -14,7 +14,7 @@ class ClienteDAO {
         cliente.id = registro.id;
         cliente.identificacion = registro.identificacion;
         cliente.nombre = registro.nombre;
-        cliente.cupoCompra = registro.cupoCompra;
+        cliente.cupoCompra = registro.cupo_compra;
         clientes.push(cliente);
       }
     }

@@ -4,11 +4,21 @@ const estado = require('../constante/EstadoCompraConstante')
 
 class CupoCompraServicio {
 
-  async validarCupoCliente (identificacionCliente) {
+  async validarCupoClienteCompraPendiente (identificacionCliente, totalProductoAgregar) {
     const infoCliente = await new ClienteServicio().verInfoCliente(identificacionCliente);
-    const infoCompra = await new CompraServicio().verInfoCompra(identificacionCliente, estado.PENDIENTE);
+    const infoCompra = await new CompraServicio().totalCompraPendienteCliente(identificacionCliente, estado.PENDIENTE);
     if (infoCliente && infoCompra) {
-      return infoCliente.cupo_compra >= infoCompra.total;
+      const totalCompra = infoCompra.total + parseFloat(totalProductoAgregar)
+      console.log(infoCliente.cupo_compra, totalProductoAgregar, infoCompra.total, totalCompra)
+      return infoCliente.cupo_compra >= totalCompra;
+    }
+    return false;
+  }
+
+  async validarCupoClienteNuevaCompra (identificacionCliente, total) {
+    const infoCliente = await new ClienteServicio().verInfoCliente(identificacionCliente);
+    if (infoCliente && total) {
+      return infoCliente.cupo_compra >= total;
     }
     return false;
   }

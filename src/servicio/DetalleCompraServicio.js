@@ -9,8 +9,8 @@ class DetalleCompraServicio {
   }
 
   async guardarDetalleCompra(detalleCompra) {
-    const { numeroCompra, codigoProducto, cantidad, valor } = detalleCompra
-    return await this.detalleCompraDAO.guardar(codigoProducto, cantidad, valor, numeroCompra);
+    const { numeroCompra, codigoProducto, valor } = detalleCompra
+    return await this.detalleCompraDAO.guardar(numeroCompra, codigoProducto, valor);
   }
 
   async eliminarDetalleCompra(detalleCompra) {
