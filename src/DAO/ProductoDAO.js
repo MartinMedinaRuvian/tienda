@@ -5,7 +5,7 @@ class ProductoDAO {
 
 
   async obtenerTodos() {
-    const response = await conexion.query('SELECT * FROM producto');
+    let response = await conexion.query('SELECT COUNT(d.codigo_producto) as cantidad, p.codigo, p.descripcion, p.valor FROM detalle_compra d right join producto p ON p.codigo = d.codigo_producto GROUP BY (p.codigo, p.descripcion, p.valor) ORDER BY cantidad desc');
     let productos = [];
     if (response && response.rows.length > 0) {
       for (const registro of response.rows) {
