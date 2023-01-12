@@ -8,6 +8,10 @@ class ProductoServicio {
     return this.productoDAO.obtenerTodos();
   }
 
+  async verTodosProductosComprados (identificacionCliente) {
+    return this.productoDAO.obtenerTodosComprados(identificacionCliente);
+  }
+
 }
 
 module.exports = ProductoServicio;

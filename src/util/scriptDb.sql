@@ -40,5 +40,5 @@ INSERT INTO producto(codigo, descripcion, valor) VALUES
 INSERT INTO cliente(nombre, identificacion, cupo_compra) VALUES
 ('Martin Medina', '1090', 250000),
 ('Cristian Rojas', '1092', 300000),
-('Johanna Luna', '1095', 168500),
+('Johanna Lunna', '1095', 168500),
 ('Angie Diaz', '1093', 125000);

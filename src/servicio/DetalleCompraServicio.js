@@ -1,4 +1,5 @@
 const DetalleCompraDAO = require('../DAO/DetalleCompraDAO');
+const estado = require('../constante/EstadoCompraConstante')
 
 class DetalleCompraServicio {
 
@@ -13,9 +14,12 @@ class DetalleCompraServicio {
     return await this.detalleCompraDAO.guardar(numeroCompra, codigoProducto, valor);
   }
 
-  async eliminarDetalleCompra(detalleCompra) {
-    const { codigoProducto, numeroCompra } = detalleCompra
-    return this.detalleCompraDAO.eliminar(codigoProducto, numeroCompra);
+  async eliminarDetalleCompra(codigoProducto, numeroCompra) {
+    return await this.detalleCompraDAO.eliminar(codigoProducto, numeroCompra);
+  }
+
+  async productoYaEstaEnCarritoCliente(codigoProducto, identificacionCliente) {
+    return await this.detalleCompraDAO.productoYaEstaEnCarritoCliente(estado.PENDIENTE, codigoProducto, identificacionCliente)
   }
 
 }

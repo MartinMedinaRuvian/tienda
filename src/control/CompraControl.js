@@ -9,6 +9,12 @@ ruta.get('/', async (req, res) =>{
   res.status(200).json(registros);
 });
 
+ruta.get('/ver_por_cliente/:identificacion_cliente/:estado', async (req, res) =>{
+  const { identificacion_cliente, estado } = req.params;
+  const registros = await compraServicio.verPorCliente(identificacion_cliente, estado);
+  res.status(200).json(registros);
+});
+
 ruta.post('/', async (req, res) => {
   const registroGuardar = req.body;
   const guardar = await compraServicio.guardarCompra(registroGuardar);

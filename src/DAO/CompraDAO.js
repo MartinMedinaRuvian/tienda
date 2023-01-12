@@ -6,7 +6,7 @@ const nombreTabla = 'compra';
 class CompraDAO {
 
   async obtenerTodos () {
-    const response = await conexion.query('SELECT * FROM ' + nombreTabla);
+    const response = await conexion.query('SELECT c.numero, p.descripcion, p.codigo, d.valor, c.fecha FROM compra c INNER JOIN detalle_compra d ON c.numero = d.numero_compra INNER JOIN producto p ON d.codigo_producto = p.codigo WHERE c.estado=$1', ['CONFIRMADA']);
     let compras = [];
     if (response && response.rows.length > 0) {
       for (const registro of response.rows) {
@@ -15,11 +15,34 @@ class CompraDAO {
         compra.fecha = registro.fecha;
         compra.estado = registro.estado;
         compra.identificacionCliente = registro.identificacion_cliente;
+        compra.descripcionProducto = registro.descripcion;
+        compra.codigoProducto = registro.codigo;
+        compra.valorProducto = registro.valor;
         compras.push(compra);
       }
     }
     return compras;
   }
+
+  async verPorCliente (identificacionCliente, estado) {
+    const response = await conexion.query('SELECT c.numero, p.descripcion, p.codigo, d.valor, c.fecha FROM compra c INNER JOIN detalle_compra d ON c.numero = d.numero_compra INNER JOIN producto p ON d.codigo_producto = p.codigo WHERE c.identificacion_cliente=$1 AND c.estado=$2', [identificacionCliente, estado]);
+    let compras = [];
+    if (response && response.rows.length > 0) {
+      for (const registro of response.rows) {
+        const compra = new Compra();
+        compra.numero = registro.numero;
+        compra.fecha = registro.fecha;
+        compra.estado = registro.estado;
+        compra.identificacionCliente = registro.identificacion_cliente;
+        compra.descripcionProducto = registro.descripcion;
+        compra.codigoProducto = registro.codigo;
+        compra.valorProducto = registro.valor;
+        compras.push(compra);
+      }
+    }
+    return compras;
+  }
+
 
   async totalCompraPendienteCliente (identificacionCliente, estado) {
     const response = await conexion.query('SELECT SUM(d.valor) as total from detalle_compra d INNER JOIN compra c ON c.numero = d.numero_compra WHERE c.identificacion_cliente=$1 AND c.estado=$2', [identificacionCliente, estado]);  

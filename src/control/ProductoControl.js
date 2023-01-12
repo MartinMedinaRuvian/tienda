@@ -9,4 +9,10 @@ ruta.get('/', async (req, res) =>{
   res.status(200).json(registros);
 });
 
+ruta.get('/comprados/:identificacion_cliente', async (req, res) =>{
+  const { identificacion_cliente } = req.params
+  const registros = await productoServicio.verTodosProductosComprados(identificacion_cliente);
+  res.status(200).json(registros);
+});
+
 module.exports = ruta;
