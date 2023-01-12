@@ -1,6 +1,10 @@
 # tienda
 Prueba técnica tienda
 
+Requisitos previos:
+Tener una versión lts de Node Js instalada en el equipo.
+Si no tiene Node Js instalado puede descargarlo de la página oficial: https://nodejs.org/es/
+
 1. Instalación base de datos:
 Dentro de la carpeta src/util hay un archivo llamado scriptDb.sql, el cual contiene el correspondiente script para la creación de la base de datos tienda_martin con sus correspondientes tablas.
 
