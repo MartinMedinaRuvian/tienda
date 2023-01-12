@@ -33,7 +33,6 @@ class DetalleCompraDAO {
 
   async productoYaEstaEnCarritoCliente (estado, codigoProducto, identificacionCliente) {
     const response = await conexion.query('SELECT d.codigo_producto FROM detalle_compra d INNER JOIN compra c ON c.numero = d.numero_compra WHERE c.estado=$1 AND d.codigo_producto=$2 AND c.identificacion_cliente=$3', [estado, codigoProducto, identificacionCliente]);
-    console.log(response, 'ok3')
     return response && response.rows.length > 0;
   }
 

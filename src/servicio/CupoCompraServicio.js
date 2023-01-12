@@ -9,7 +9,6 @@ class CupoCompraServicio {
     const infoCompra = await new CompraServicio().totalCompraPendienteCliente(identificacionCliente, estado.PENDIENTE);
     if (infoCliente && infoCompra) {
       const totalCompra = infoCompra.total + parseFloat(totalProductoAgregar)
-      console.log(infoCliente.cupo_compra, totalProductoAgregar, infoCompra.total, totalCompra)
       return infoCliente.cupo_compra >= totalCompra;
     }
     return false;
