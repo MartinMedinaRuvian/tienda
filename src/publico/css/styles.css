@@ -1,0 +1,233 @@
+@import url('../css/fonts.css');
+
+
+body{
+padding-top: 60px;
+font-family: "nunito-regular"; 
+background-color:#fff;
+margin:0;
+}
+
+#btn-ingresar-salir{
+    float: right;
+    font-size: 16px;
+}
+
+.card{
+    border-radius: 25px;
+}
+
+.card-body{
+    cursor: pointer;
+}
+
+.color-verde-principal {
+    color: #00A82D;
+}
+
+.container-inicio{
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-inicio h1{
+    font-size: 40px;
+}
+
+.container-inicio p{
+    font-size: 20px;
+}
+
+.container-inicio-sesion span{
+    font-size: 50px;
+}
+
+.container-inicio-sesion .link-crear-cuenta{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.contenedor-vistas{
+    margin-top: 80px;
+}
+
+.titulo {
+    font-size: 50px;
+}
+
+.tarjeta-insumo{
+    border-radius: 10px;
+    border: solid #00A82D 0.2px;
+    padding: 20px;
+}
+
+h1{
+    font-family: "nunito-bold";
+}
+
+.formulario {
+    text-align: center;
+    width: 400px;
+}
+
+.footer{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+#navegacion {
+    background-color: #F5F5F5;
+}
+
+.navbar-brand{
+    font-size: 25px;
+    font-family: "nunito-bold";                     
+}
+
+
+#navegacion{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+
+#navegacion-titulo-principal{
+    color: green;
+}
+
+.modal-header{  
+    border-top-left-radius:18px;
+    border-top-right-radius:18px;
+    background-color: #EF5350;
+    color: #fff;
+}
+
+.modal-footer{
+    padding: 20px;
+}
+
+.modal-precio-producto{
+    font-size: 33px;
+    font-weight: 700;
+}
+
+.map-responsive iframe{
+    height:400px;
+    width:100%;
+}
+
+
+.modal-content{
+    border-radius: 23px;
+}
+
+#principal-contenedor-padre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.row{
+    margin:0;
+    padding: 0;
+}
+
+#btnverPaginaVendedor{
+    cursor: pointer;
+}
+
+@media (max-width:767px){
+    .card img{
+        height: 100%;
+    }
+
+    .contenedor-vistas{
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #navegacion{
+        background-color: #F5F5F5;
+        border-end-start-radius: 20px;
+        border-end-end-radius: 20px;
+    }
+
+    #navbarNav li{
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+
+    #navbarNav li{
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 5px;
+    }
+
+    .btn-registro{
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .formulario{
+        width: 300px;
+    }
+}
+
+@media (min-width:775px){
+    #navegacion{
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+    
+    #fila-principal-texto{
+        margin-top: 20px;
+    }
+    #fila-principal{
+        margin-top: 60px;
+    }
+    #buscadorProductos{
+        width: 420px;
+    }
+        
+    #contacto-principal{
+        width: 450px;
+    }
+
+    .img-login{
+        width: 300px;
+        margin-left: 40px;
+        margin-top: 0px;
+    }
+
+    .alto{
+        margin-top: 50px;
+     }
+}
+
+@media (min-width:853px){
+    #fila-principal-texto{
+        margin-top: 20px;
+    }
+    #fila-principal{
+        margin-top: 60px;
+    }
+}
+
+@media (min-width:990px){
+    #fila-principal-texto{
+        margin-top: 70px;
+    }
+}
+
+@media (min-width:1200px){
+    #fila-principal-texto{
+        margin-top: 80px;
+    }
+}

@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 require('dotenv').config({ path: './credenciales.env' })
+const path = require('path');
 
 const app = express();
 
@@ -12,6 +13,11 @@ app.use(cors())
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+
+/**
+ * Configuro la carpeta publica donde va ir todo el frontend
+ */
+app.use(express.static(path.join(__dirname, 'publico')))
 
 
 /**
