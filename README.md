@@ -18,3 +18,7 @@ Abrir una terminal en la carpeta raiz del proyecto y ejecutar el comando: npm st
 Verificar abriendo un navegador y ingresar a la ruta o link:
 
 http://localhost:5000/
+
+# Frontend:
+Proyecto en Vue Js:
+https://github.com/MartinMedinaRuvian/tienda-front
